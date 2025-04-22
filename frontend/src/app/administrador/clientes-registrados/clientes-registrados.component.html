@@ -1,0 +1,103 @@
+<main class="box">
+  <div class="container bg-light p-3 my-5 rounded">
+
+    <form class="d-flex" method="post">
+
+      <input class="form-control me-2" type="search" name="idCita" id="idCita"
+        placeholder="Ingresa el codigo del cliente" aria-label="Search">
+      <button class="btn btn-success me-1" type="submit" name="buscar" id="buscar">Buscar</button>
+      <button class="btn btn-secondary me-1" type="submit">Limpiar</button>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Agregar
+      </button>
+    </form>
+    <div class="table-responsive my-3">
+      <table class="table table-bordered table-hover border-dark">
+        <thead class="bg-danger">
+          <tr>
+            <th scope="col">Codigo</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Contraseña</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">telefono</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngIf="clientes.length; else emptyMessage">
+            <tr *ngFor="let cliente of clientes">
+              <td>{{cliente.idCliente}}</td>
+              <td>{{cliente.correoCliente}}</td>
+              <td><input type="password" [value]="cliente.contrasenaCliente" class="form-control d-inline-block w-auto"
+                  (mouseenter)="showPass($event)" (mouseleave)="hidePass($event)" readonly></td>
+              <td>{{cliente.nombreCliente}}</td>
+              <td>{{cliente.apellidoCliente}}</td>
+              <td>{{cliente.telefonoCliente}}</td>
+              <td>
+                <button class="btn btn-danger mb-1 me-1" (click)="deleteCliente(cliente.idCliente)"><i
+                    class="fa-regular fa-trash-can"></i></button>
+                <!-- Botón Editar -->
+                <button class="btn btn-warning mb-1 me-1" (click)="openModalEditar(modalEditar, cliente)"><i
+                    class="fa-solid fa-file-pen"></i></button>
+              </td>
+            </tr>
+          </ng-container>
+
+          <ng-template #emptyMessage>
+            <tr>
+              <td colspan="7">No hay datos para mostrar</td>
+            </tr>
+          </ng-template>
+
+        </tbody>
+      </table>
+    </div>
+    <!-- Modal de edición -->
+    <ng-template #modalEditar let-modal>
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Cliente</h5>
+        <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm">
+          <div class="mb-3">
+            <label for="correo" class="form-label">Correo</label>
+            <input type="email" [(ngModel)]="clienteSeleccionado.correoCliente" name="correo" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="contraseña" class="form-label">Contraseña</label>
+            <div class="input-group">
+              <input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="clienteSeleccionado.contrasenaCliente"
+                name="contraseña" class="form-control">
+              <button type="button" class="btn btn-outline-secondary" (click)="togglePassword()">
+                <i [ngClass]="showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+              </button>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" [(ngModel)]="clienteSeleccionado.nombreCliente" name="nombre" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido</label>
+            <input type="text" [(ngModel)]="clienteSeleccionado.apellidoCliente" name="apellido" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="telefono" class="form-label">Telefono</label>
+            <input type="tel" [(ngModel)]="clienteSeleccionado.telefonoCliente" name="telefono" class="form-control">
+          </div>
+          <button type="button" class="btn btn-warning" (click)="updateCliente()">Guardar cambios</button>
+        </form>
+      </div>
+    </ng-template>
+
+    <!-- Componente reutilizable -->
+    <app-paginador 
+    [totalItems]="clientesPaginados.length" 
+    [itemsPorPagina]="clientesPorPagina" 
+    [paginaActual]="paginaActual"
+    (paginaSeleccionada)="onPaginaSeleccionada($event)">
+    </app-paginador>
+  </div>
+</main>

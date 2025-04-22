@@ -1,0 +1,32 @@
+<div class="form-wrapper">
+  <div class="container" id="form">
+    <h2 class="form-title">Registra tu cita</h2>
+    <form class="bg-danger p-3 m-5 rounded" [formGroup]="form" (ngSubmit)="onSubmit()">
+      
+      <div class="mb-3">
+        <label class="form-label">Fecha de tu cita</label>
+        <input type="date" class="form-control" formControlName="fechaCita">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Hora de la cita</label>
+        <input type="time" class="form-control" formControlName="horaCita">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Empleado</label>
+        <select class="form-select" formControlName="idEmpleado">
+          <option value="">Seleccione un empleado</option>
+          <option *ngFor="let empleado of empleados" [value]="empleado.idEmpleado">
+            {{ empleado.nombreEmpleado }}
+          </option>
+        </select>
+      </div>
+
+      <div>
+        <button type="submit" class="btn btn-dark" [disabled]="form.invalid">Ingresar</button>
+      </div>
+
+    </form>
+  </div>
+</div>

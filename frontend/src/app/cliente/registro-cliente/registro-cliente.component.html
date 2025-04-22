@@ -1,0 +1,57 @@
+<div class="form-wrapper">
+    <div class="container" id="form">
+        <h2 class="form-title">Registrate!</h2>
+        <form class="bg-danger p-3 m-5 rounded" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <label class="form-label">
+                  Correo 
+                  <button 
+                    type="button" 
+                    class="btn btn-sm btn-outline-dark" 
+                    popoverClass="mi-popover-custom "
+                    ngbPopover="Debes ingresar un correo que siga la estructura: ejemplo@correo.com" 
+                    popoverTitle="Ayuda"
+                    placement="right"
+                    triggers="click">
+                    ?
+                  </button>
+                </label>
+                <input type="email" class="form-control" id="correoCliente" formControlName="correoCliente">
+                <div *ngIf="form.get('correoCliente')?.invalid && form.get('correoCliente')?.touched" class="text-dark">
+                  Ingresa un correo válido.
+                </div>
+              </div>
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombreCliente" formControlName="nombreCliente" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Apellido</label>
+                <input type="text" class="form-control" id="apellidoCliente" formControlName="apellidoCliente">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Telefono</label>
+                <input type="text" class="form-control" id="telefonoCliente" formControlName="telefonoCliente">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Contraseña
+                  <button 
+                    type="button" 
+                    class="btn btn-sm btn-outline-dark" 
+                    popoverClass="mi-popover-custom "
+                    ngbPopover="Tu contraseña debe contar con minimo 8 caracteres entre: numeros, letras mayusculas, minusculas y almenos 1 caracter especial " 
+                    popoverTitle="Ayuda"
+                    placement="right"
+                    triggers="click">
+                    ?
+                  </button>
+                </label>
+                <input type="password" class="form-control" id="contrasenaCliente" formControlName="contrasenaCliente">
+            </div>
+            <div>
+                <button type="submit" class="btn btn-dark" name="Guardar" [disabled]="form.invalid">Registrate</button>
+            </div>            
+        </form>
+    </div>
+    </div>
+    

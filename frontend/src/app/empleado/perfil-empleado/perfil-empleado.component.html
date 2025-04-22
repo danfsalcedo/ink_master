@@ -1,0 +1,29 @@
+<div class="form-wrapper">
+  <div class="container">
+    <div class="form-title">Perfil del Tatuador</div>
+    <form class="bg-danger p-3 m-5 rounded" [formGroup]="perfilForm" (ngSubmit)="guardarPerfil()" enctype="multipart/form-data">
+      
+      <div class="mb-3">
+        <label for="foto" class="form-label">Foto del Tatuador</label>
+        <input type="file" class=" form-control" (change)="onFileSelected($event)" />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Historia</label>
+        <textarea class="form-control custom-textarea" formControlName="historiaEmpleado" rows="4" placeholder="Cuéntanos tu historia..."></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Experiencia</label>
+        <textarea class="form-control custom-textarea" formControlName="experienciaEmpleado" rows="4" placeholder="Describe tu experiencia..."></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Enfoques</label>
+        <textarea class="form-control" formControlName="enfoquesEmpleado" placeholder="Enfoques y estilos que manejas"> </textarea>
+      </div>
+
+      <button class="btn btn-dark mt-4" type="submit">Guardar</button>
+    </form>
+  </div>
+</div>

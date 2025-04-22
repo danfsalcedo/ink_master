@@ -1,0 +1,61 @@
+/* Estilo para el contenedor principal */
+.container-fluid-2 {
+    padding: 5%;
+    background-color: rgb(138, 13, 13); /* Fondo rojo oscuro */
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+/* Estilo para los textos en mayúsculas */
+.text-uppercase {
+    color: white;
+    font-size: 85px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    text-align: left;
+    letter-spacing: 1px;
+    margin: 10px;
+}
+
+/* Estilo para las tarjetas */
+.card {
+    margin: 10px 0;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para el contenido dentro de la tarjeta */
+.card-body {
+    background-color: rgb(138, 13, 13); /* Fondo rojo oscuro */
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Estilo para los títulos dentro de las tarjetas */
+.card-title {
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Estilo para el texto dentro de las tarjetas */
+.card-text {
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    line-height: 1.6;
+}
+
+/* Estilo para el texto de los links */
+.card-text a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.card-text a:hover {
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+}

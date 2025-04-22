@@ -1,0 +1,88 @@
+<main class="box">
+<div class="container bg-light p-3 my-5 rounded">
+
+    <form class="d-flex" method="post">
+
+        <input class="form-control me-2" type="search" name="idCita" id="idCita"
+            placeholder="Ingresa el codigo de la cita" aria-label="Search">
+        <button class="btn btn-success me-1" type="submit" name="buscar" id="buscar">Buscar</button>
+        <button class="btn btn-secondary me-1" type="submit">Limpiar</button>
+    </form>
+    <div class="table-responsive my-3">
+        <table class="table table-bordered table-hover border-dark">
+            <thead class="bg-danger">
+              <tr>
+                <th scope="col">Codigo</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Hora</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Empleado</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngIf="citas.length; else emptyMessage">
+                    <tr *ngFor="let cita of citas">
+                        <td>{{cita.idCita}}</td>
+                        <td>{{cita.fechaCita}}</td>
+                        <td>{{cita.horaCita}}</td>
+                        <td>{{cita.idCliente}}</td>
+                        <td>{{cita.idEmpleado}}</td>
+                        <td>
+                            <button class="btn btn-danger mb-1 me-1" (click)="deleteCita(cita.idCita)"><i
+                                class="fa-regular fa-trash-can"></i></button>
+                            <!-- Botón Editar -->
+                            <button class="btn btn-warning mb-1 me-1" (click)="openModalEditar(modalEditar, cita)"><i
+                                class="fa-solid fa-file-pen"></i></button>
+                          </td>
+                    </tr>
+                </ng-container>
+
+                <ng-template #emptyMessage>
+                    <tr>
+                        <td colspan="6">No hay datos para mostrar</td>
+                    </tr>
+                </ng-template>
+
+            </tbody>
+        </table>
+    </div>
+    <!-- Modal de edición -->
+    <ng-template #modalEditar let-modal>
+        <div class="modal-header">
+          <h5 class="modal-title">Editar Cita</h5>
+          <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
+        </div>
+        <div class="modal-body">
+          <form #editForm="ngForm">
+            <div class="mb-3">
+              <label for="correo" class="form-label">Fecha cita</label>
+              <input type="date" [(ngModel)]="citaSeleccionado.fechaCita" name="correo" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Hora cita</label>
+              <input type="time" [(ngModel)]="citaSeleccionado.horaCita" name="nombre" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="apellido" class="form-label">Nombre del cliente</label>
+              <input type="text" [(ngModel)]="citaSeleccionado.idCliente" name="apellido" class="form-control" disabled >
+            </div>
+            <div class="mb-3">
+              <label for="telefono" class="form-label">Nombre del empleado</label>
+              <input type="text" [(ngModel)]="citaSeleccionado.idEmpleado" name="telefono" class="form-control" disabled>
+            </div>
+            <button type="button" class="btn btn-warning" (click)="updateCita()">Guardar cambios</button>
+          </form>
+        </div>
+      </ng-template>
+  
+      <!-- Componente reutilizable -->
+      <app-paginador 
+      [totalItems]="citasPaginadas.length" 
+      [itemsPorPagina]="citasPorPagina" 
+      [paginaActual]="paginaActual"
+      (paginaSeleccionada)="onPaginaSeleccionada($event)">
+      </app-paginador>
+</div>
+</main>
+  

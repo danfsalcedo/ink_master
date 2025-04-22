@@ -1,0 +1,21 @@
+.form-wrapper {
+    display: flex;
+    justify-content: center;      /* Centra horizontalmente */
+    align-items: center;          /* Centra verticalmente */
+    min-height: calc(100vh - 120px); /* Ajusta la altura restando el espacio de cabecera y pie de página */
+    padding: 2rem 0;              /* Espacio adicional arriba y abajo */
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;               /* Centra horizontalmente */
+}
+
+.form-title {
+    color: #fff;                  /* Color blanco */
+    text-align: center;           /* Centra el texto */
+    font-size: 3rem;              /* Tamaño de letra atractivo */
+    font-weight: bold;            /* Hace el texto más grueso */
+    margin-bottom: 1.5rem;        /* Espacio debajo del título */
+    margin-top: 2rem;             /* Espacio encima del título */
+}

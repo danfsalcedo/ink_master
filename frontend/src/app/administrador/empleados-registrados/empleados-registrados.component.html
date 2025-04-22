@@ -1,0 +1,136 @@
+<main class="box">
+    <div class="container bg-light p-3 my-5 rounded">
+  
+      <form class="d-flex" method="post">
+  
+        <input class="form-control me-2" type="search" name="idCita" id="idCita"
+          placeholder="Ingresa el nombre del empleado" aria-label="Search">
+        <button class="btn btn-success me-1" type="submit" name="buscar" id="buscar">Buscar</button>
+        <button class="btn btn-secondary me-1" type="submit">Limpiar</button>
+        <button type="button" class="btn btn-primary" (click)="openModalCrear(crearEmpleado)">
+          Agregar
+        </button>
+      </form>
+      <!-- Modal para crear  -->
+      <ng-template #crearEmpleado let-modal>
+        <div class="modal-header">
+          <h5 class="modal-title">Registrar nuevo empleado</h5>
+          <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
+        </div>
+        <div class="modal-body">
+          <form #createForm="ngForm">
+            <div class="mb-3" *ngIf="nuevoEmpleado.idEmpleado">
+              <label for="idEmpleado" class="form-label">ID Empleado</label>
+              <input type="number" [value]="nuevoEmpleado.idEmpleado" class="form-control" disabled>
+            </div>
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text" [(ngModel)]="nuevoEmpleado.nombreEmpleado" name="nombre" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="correo" class="form-label">Correo</label>
+              <input type="email" [(ngModel)]="nuevoEmpleado.correoEmpleado" name="correo" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="contrasena" class="form-label">Contraseña</label>
+              <div class="input-group">
+                <input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="nuevoEmpleado.contrasenaEmpleado"
+                  name="contrasena" class="form-control" required>
+                <button type="button" class="btn btn-outline-secondary" (click)="togglePassword()">
+                  <i [ngClass]="showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+                </button>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="telefono" class="form-label">Teléfono</label>
+              <input type="tel" [(ngModel)]="nuevoEmpleado.telefonoEmpleado" name="telefono" class="form-control">
+            </div>
+            <button type="button" class="btn btn-success" (click)="createEmpleado()">Crear empleado</button>
+          </form>
+        </div>
+      </ng-template>
+      
+      <div class="table-responsive my-3">
+        <table class="table table-bordered table-hover border-dark">
+          <thead class="bg-danger">
+            <tr>
+              <th scope="col">Codigo</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Contraseña</th>
+              <th scope="col">telefono</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngIf="empleados.length; else emptyMessage">
+              <tr *ngFor="let empleado of empleados">
+                <td>{{empleado.idEmpleado}}</td>
+                <td>{{empleado.nombreEmpleado}}</td>
+                <td>{{empleado.correoEmpleado}}</td>
+                <td><input type="password" [value]="empleado.contrasenaEmpleado" class="form-control d-inline-block w-auto"
+                    (mouseenter)="showPass($event)" (mouseleave)="hidePass($event)" readonly></td>
+                <td>{{empleado.telefonoEmpleado}}</td>
+                <td>
+                  <button class="btn btn-danger mb-1 me-1" (click)="deleteEmpleado(empleado.idEmpleado!)"><i
+                      class="fa-regular fa-trash-can"></i></button>
+                  <!-- Botón Editar -->
+                  <button class="btn btn-warning mb-1 me-1" (click)="openModalEditar(modalEditar, empleado)"><i
+                      class="fa-solid fa-file-pen"></i></button>
+                </td>
+              </tr>
+            </ng-container>
+  
+            <ng-template #emptyMessage>
+              <tr>
+                <td colspan="7">No hay datos para mostrar</td>
+              </tr>
+            </ng-template>
+  
+          </tbody>
+        </table>
+      </div>
+      <!-- Modal de edición -->
+      <ng-template #modalEditar let-modal>
+        <div class="modal-header">
+          <h5 class="modal-title">Editar empleado</h5>
+          <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
+        </div>
+        <div class="modal-body">
+          <form #editForm="ngForm">
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text" [(ngModel)]="empleadoSeleccionado.nombreEmpleado" name="nombre" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="correo" class="form-label">Correo</label>
+              <input type="email" [(ngModel)]="empleadoSeleccionado.correoEmpleado" name="correo" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="contraseña" class="form-label">Contraseña</label>
+              <div class="input-group">
+                <input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="empleadoSeleccionado.contrasenaEmpleado"
+                  name="contraseña" class="form-control">
+                <button type="button" class="btn btn-outline-secondary" (click)="togglePassword()">
+                  <i [ngClass]="showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+                </button>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="telefono" class="form-label">Telefono</label>
+              <input type="tel" [(ngModel)]="empleadoSeleccionado.telefonoEmpleado" name="telefono" class="form-control">
+            </div>
+            <button type="button" class="btn btn-warning" (click)="updateEmpleado()">Guardar cambios</button>
+          </form>
+        </div>
+      </ng-template>
+  
+      <!-- Componente reutilizable -->
+      <app-paginador 
+      [totalItems]="empleadosPaginados.length" 
+      [itemsPorPagina]="empleadosPorPagina" 
+      [paginaActual]="paginaActual"
+      (paginaSeleccionada)="onPaginaSeleccionada($event)">
+      </app-paginador>
+    </div>
+  </main>

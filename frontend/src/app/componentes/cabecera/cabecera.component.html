@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['/inicio']">
+      <img src="asset/images/logoDragon.webp" alt="IMG" width="45" height="45">Ink Master
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li *ngIf="!isAuthenticated()" class="nav-item">
+          <a class="nav-link" [routerLink]="['/tatuadores']">Nuestros artistas</a>
+        </li>
+        <!-- Opciones comunes para usuarios autenticados -->
+        <li *ngIf="isAuthenticated()" class="nav-item">
+          <a class="nav-link" [routerLink]="['/tatuadores']">Nuestros artistas</a>
+        </li>
+        
+        <!-- Opciones para clientes -->
+        <li *ngIf="isCliente()" class="nav-item">
+          <a class="nav-link" [routerLink]="['/agenda']">Reserva tu cita</a>
+        </li>
+
+        <!-- Opciones para empleados -->
+        <li *ngIf="isEmpleado()" class="nav-item">
+          <a class="nav-link" [routerLink]="['/calendario']">Calendario de citas</a>
+        </li>
+        <li *ngIf="isEmpleado()" class="nav-item">
+          <a class="nav-link" [routerLink]="['/perfil']">Tu perfil</a>
+        </li>
+
+        <!-- Opciones para administradores -->
+        <li *ngIf="isAdmin()" class="nav-item">
+          <a class="nav-link" [routerLink]="['/citas']">Gestión de citas</a>
+        </li>
+        <li *ngIf="isAdmin()" class="nav-item">
+          <a class="nav-link" [routerLink]="['/clientes']">Gestion de clientes</a>
+        </li>
+        <li *ngIf="isAdmin()" class="nav-item">
+          <a class="nav-link" [routerLink]="['/empleados']">Gestión de empleados</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <!-- Mostrar "Registrate" solo para no autenticados (y solo si es ruta de cliente) -->
+        <li *ngIf="!isAuthenticated()" class="nav-item">
+          <a class="nav-link" [routerLink]="['/registrate']">Registrate</a>
+        </li>
+
+        <!-- Mostrar "Iniciar sesión" solo si no estás autenticado -->
+        <li *ngIf="!isAuthenticated()" class="nav-item" id="inicio">
+          <a class="nav-link" [routerLink]="['/login']">Iniciar sesión</a>
+        </li>
+
+        <!-- Mostrar información del usuario y cerrar sesión -->
+        <li *ngIf="isAuthenticated()" class="nav-item">
+          <a class="nav-link" (click)="onLogout()">Cerrar sesión</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

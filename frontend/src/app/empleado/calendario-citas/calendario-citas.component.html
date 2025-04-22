@@ -1,0 +1,25 @@
+<div class="calendario-container">
+  <h2 class="form-title">Tus citas del día</h2>
+  
+  <div class="calendario-wrapper">
+    <div class="calendario-section">
+      <full-calendar *ngIf="isBrowser" [options]="calendarOptions"></full-calendar>
+    </div>
+    
+    <div class="citas-section">
+      <div class="citas-dia">
+        <h3>Citas del día</h3>
+        <div *ngIf="citasDelDia.length > 0; else noCitas">
+          <div *ngFor="let cita of citasDelDia" class="cita-item">
+            <strong>Cliente ID:</strong> {{ cita.idCliente }}<br />
+            <strong>Empleado ID:</strong> {{ cita.idEmpleado }}<br />
+            <strong>Hora:</strong> {{ cita.horaCita }}
+          </div>
+        </div>
+        <ng-template #noCitas>
+          <div class="empty-message">No hay citas para este día.</div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

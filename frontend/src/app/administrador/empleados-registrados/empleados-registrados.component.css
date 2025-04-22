@@ -1,0 +1,7 @@
+.box {
+  display: flex;
+  justify-content: center;      /* Centra horizontalmente */
+  align-items: center;          /* Centra verticalmente */
+  min-height: calc(100vh - 120px); /* Ajusta la altura restando el espacio de cabecera y pie de página */
+          /* Espacio adicional arriba y abajo */
+}

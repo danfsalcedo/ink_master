@@ -1,0 +1,45 @@
+.form-wrapper {
+    display: flex;
+    
+    justify-content: center;      /* Centra horizontalmente */
+    align-items: center;          /* Centra verticalmente */
+    min-height: calc(100vh - 120px); /* Ajusta la altura restando el espacio de cabecera y pie de página */
+    padding: 2rem 0;
+display: flex;
+justify-content: center;      /* Centra horizontalmente */
+align-items: center;          /* Centra verticalmente */
+min-height: calc(100vh - 120px); /* Ajusta la altura restando el espacio de cabecera y pie de página */
+padding: 2rem 0;              /* Espacio adicional arriba y abajo */
+}
+
+.container {
+width: 100%;
+max-width: 600px;             /* Limita el ancho del formulario */
+margin: 0 auto;               /* Centra horizontalmente */
+}
+
+.form-title {
+color: #fff;                  /* Color blanco */
+text-align: center;           /* Centra el texto */
+font-size: 3rem;              /* Tamaño de letra atractivo */
+font-weight: bold;            /* Hace el texto más grueso */
+margin-bottom: 1.5rem;        /* Espacio debajo del título */
+margin-top: 2rem;  
+         /* Espacio encima del título */
+}
+
+::ng-deep .popover {
+  border: 2px solid #212529;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+::ng-deep .popover-header {
+  background-color: #212529;
+  color: white;
+}
+
+::ng-deep .popover-body {
+  font-size: 14px;
+  color: #444;
+}

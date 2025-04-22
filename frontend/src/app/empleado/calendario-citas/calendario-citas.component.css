@@ -1,0 +1,162 @@
+:host {
+  display: block;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* Contenedor principal centrado */
+.calendario-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.form-title {
+  color: #ffffff;  /* Cambié a un color más visible */
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+
+/* Wrapper que contiene calendario y citas */
+.calendario-wrapper {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+/* Sección del calendario */
+.calendario-section {
+  flex: 2;  /* Toma 2/3 del espacio */
+  min-width: 0;  /* Importante para que funcione flex correctamente */
+}
+
+/* Sección de citas */
+.citas-section {
+  flex: 1;  /* Toma 1/3 del espacio */
+  min-width: 280px;  /* Ancho mínimo para legibilidad */
+}
+
+/* Estilo general del calendario */
+full-calendar {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
+
+/* Título de citas */
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+/* Contenedor de citas del día */
+.citas-dia {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 1rem;  /* Se mantiene visible al hacer scroll */
+}
+
+/* Cada cita */
+.cita-item {
+  border-left: 4px solid #4CAF50;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  background-color: #fefefe;
+  border-radius: 6px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.cita-item:hover {
+  background-color: #f0fdf4;
+}
+
+.empty-message {
+  font-style: italic;
+  color: #888;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* RESPONSIVE - Para tablets y móviles */
+@media screen and (max-width: 768px) {
+  :host {
+    padding: 1rem;
+  }
+
+  .form-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .calendario-wrapper {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .calendario-section,
+  .citas-section {
+    width: 100%;
+    flex: none;
+  }
+
+  .citas-section {
+    order: 2;  /* Las citas se muestran después del calendario */
+  }
+
+  .citas-dia {
+    position: static;  /* Remueve el sticky en móviles */
+  }
+}
+
+/* Para pantallas muy pequeñas */
+@media screen and (max-width: 480px) {
+  .form-title {
+    font-size: 1.75rem;
+  }
+
+  .citas-dia {
+    padding: 1rem;
+  }
+}
+
+/* Ajuste específico para el calendario de FullCalendar */
+:host ::ng-deep .fc {
+  --fc-border-color: #e0e0e0;
+  --fc-today-bg-color: #f0fdf4;
+  --fc-button-bg-color: #4CAF50;
+  --fc-button-border-color: #4CAF50;
+  --fc-button-hover-bg-color: #45a049;
+  --fc-button-hover-border-color: #45a049;
+  --fc-button-active-bg-color: #3d8b40;
+  --fc-button-active-border-color: #3d8b40;
+}
+
+:host ::ng-deep .fc .fc-toolbar-title {
+  font-size: 1.3rem !important;
+  font-weight: 600;
+}
+
+:host ::ng-deep .fc .fc-button {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.9rem;
+}
+
+/* Hace el calendario más pequeño en pantallas grandes */
+@media screen and (min-width: 769px) {
+  :host ::ng-deep .fc .fc-daygrid-day {
+    min-height: 80px !important;
+  }
+  
+  :host ::ng-deep .fc .fc-daygrid-day-frame {
+    min-height: 80px !important;
+  }
+}

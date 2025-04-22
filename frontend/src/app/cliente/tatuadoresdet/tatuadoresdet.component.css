@@ -1,0 +1,51 @@
+/* Contenedor general */
+.container-fluid {
+    /* Fondo gris oscuro para todo el contenedor */
+   padding: 30px 15px; /* Espaciado interno del contenedor para separar las tarjetas de los bordes */
+}
+
+/* Fila para las tarjetas */
+.row {
+   margin-bottom: 30px; /* Espaciado entre filas */
+}
+
+/* Tarjetas */
+.card {
+   border: 1px solid rgb(138, 13, 13); /* Borde rojo */
+   border-radius: 10px; /* Bordes redondeados */
+   background-color: rgb(138, 13, 13); /* Fondo rojo */
+   color: rgb(255, 255, 255); /* Texto blanco */
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil para profundidad */
+   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación suave */
+   margin: 15px; /* Separación entre las tarjetas */
+}
+
+/* Efecto hover para tarjetas */
+.card:hover {
+   transform: translateY(-5px); /* Efecto de movimiento hacia arriba */
+   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más fuerte al pasar el mouse */
+}
+
+/* Cuerpo de la tarjeta */
+.card-body {
+   padding: 20px; /* Espaciado interno de la tarjeta */
+}
+
+/* Títulos de las tarjetas */
+.card-title {
+   font-size: 1.25rem; /* Tamaño de fuente más grande */
+   font-weight: bold; /* Texto en negrita */
+   margin-bottom: 15px; /* Espaciado debajo del título */
+}
+
+/* Texto dentro de las tarjetas */
+.card-text {
+   font-size: 1rem; /* Tamaño de fuente estándar */
+   line-height: 1.6; /* Espaciado entre líneas */
+   margin-bottom: 15px; /* Espaciado entre párrafos */
+}
+
+.img-fluid {
+    margin-top: 20px;
+
+}
