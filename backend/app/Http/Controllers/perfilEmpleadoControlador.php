@@ -12,7 +12,18 @@ class perfilEmpleadoControlador extends Controller
 {
     public function listar()
     {
-        $perfiles = perfilEmpleado::all();
+        $perfiles = perfilEmpleado::select(
+            'idPerfil',
+            'idEmpleado',
+            'fotoEmpleado',
+            'historiaEmpleado',
+            'experienciaEmpleado',
+            'enfoquesEmpleado'
+        )
+        ->with([
+            'empleado:idEmpleado,nombreEmpleado',
+        ])
+        ->get();
     
         if ($perfiles->isEmpty()) {
             $data = [

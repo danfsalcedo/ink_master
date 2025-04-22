@@ -1,3 +1,5 @@
+import { Empleado } from './empleado.model';
+
 export interface PerfilEmpleado {
     idPerfil: number;
     idEmpleado: number;
@@ -5,4 +7,5 @@ export interface PerfilEmpleado {
     historiaEmpleado?: string;
     experienciaEmpleado?: string;
     enfoquesEmpleado?: string;
+    empleado?: Empleado;
   }

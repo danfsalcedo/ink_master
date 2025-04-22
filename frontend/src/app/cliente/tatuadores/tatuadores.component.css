@@ -1,58 +1,87 @@
 /* Contenedor general */
 .container-fluid {
-   /* Fondo gris oscuro para todo el contenedor */
-  padding: 30px 15px; /* Espaciado interno del contenedor para separar las tarjetas de los bordes */
+  padding: 30px 15px;
 }
 
 /* Fila para las tarjetas */
 .row {
-  margin-bottom: 30px; /* Espaciado entre filas */
+  margin-bottom: 30px;
 }
 
 /* Tarjetas */
 .card {
-  border: 1px solid rgb(138, 13, 13); /* Borde rojo */
-  border-radius: 10px; /* Bordes redondeados */
-  background-color: rgb(138, 13, 13); /* Fondo rojo */
-  color: rgb(255, 255, 255); /* Texto blanco */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil para profundidad */
+  border: none; /* Sin borde para un diseño más limpio */
+  border-radius: 12px; /* Bordes más redondeados */
+  background-color: rgb(138, 13, 13);; /* Fondo blanco para las tarjetas */
+  color: #fff; /* Texto en color oscuro para mejor legibilidad */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra más suave para profundidad */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación suave */
-  margin: 15px; /* Separación entre las tarjetas */
+  margin: 15px;
+  overflow: hidden; /* Asegura que la imagen no sobresalga */
 }
 
 /* Efecto hover para tarjetas */
 .card:hover {
-  transform: translateY(-5px); /* Efecto de movimiento hacia arriba */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más fuerte al pasar el mouse */
+  transform: translateY(-10px); /* Efecto de movimiento hacia arriba */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Sombra más fuerte al pasar el mouse */
+}
+
+/* Imagen de la tarjeta */
+.card img {
+  width: 100%; /* La imagen ocupa todo el ancho de la tarjeta */
+  height: 350px; /* Altura fija para la imagen */
+  object-fit: cover; /* Ajuste de imagen para que cubra el área sin deformarse */
+  border-radius: 12px 12px 0 0; /* Bordes redondeados en la parte superior */
 }
 
 /* Cuerpo de la tarjeta */
 .card-body {
-  padding: 20px; /* Espaciado interno de la tarjeta */
+  padding: 25px;
+  text-align: center; /* Centra el texto en la tarjeta */
 }
 
 /* Títulos de las tarjetas */
 .card-title {
-  font-size: 1.25rem; /* Tamaño de fuente más grande */
-  font-weight: bold; /* Texto en negrita */
-  margin-bottom: 15px; /* Espaciado debajo del título */
+  font-size: 1.5rem; /* Título más grande */
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff; /* Color oscuro para mejor contraste */
+  margin-bottom: 20px;
 }
 
+.card-subtitle {
+  font-size: 1.4rem; /* Subtítulo más grande */
+  color: #fff; /* Color gris para el subtítulo */
+  margin-bottom: 20px;
+}
 /* Texto dentro de las tarjetas */
 .card-text {
-  font-size: 1rem; /* Tamaño de fuente estándar */
-  line-height: 1.6; /* Espaciado entre líneas */
-  margin-bottom: 15px; /* Espaciado entre párrafos */
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #f8d3d3; /* Color gris para el texto */
+  margin-bottom: 20px;
 }
 
-.mx-auto {
-  margin: 5%;
-  height: 40%;
-  width: 40%;
-}
-
+/* Botón de la tarjeta */
 .btn {
-  background-color: black;
+  background-color: rgb(31, 24, 24); /* Botón rojo */
   color: white;
-  max-width: 30px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  text-transform: uppercase; /* Texto en mayúsculas */
+}
+
+/* Efecto hover en el botón */
+.btn:hover {
+  background-color: #333; /* Rojo más oscuro al pasar el mouse */
+}
+
+/* Centrar imagen y botones */
+.mx-auto {
+  display: block;
+  margin: 0 auto;
+  height: 40%;
+  width: 60%;
 }

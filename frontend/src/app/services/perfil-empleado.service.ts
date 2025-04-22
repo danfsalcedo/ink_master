@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { PerfilEmpleado } from '../modelos/perfil-empleado.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,14 @@ export class PerfilEmpleadoService {
     );
   }
   
+  getPerfiles(): Observable<PerfilEmpleado[]> {
+    return this.http.get<PerfilEmpleado[]>(this.apiUrl).pipe(
+      catchError(error => {
+        console.error('Error al obtener perfiles', error);
+        return throwError(() => error);
+      })
+    );
+  }
   guardarPerfil(data: FormData) {
     return this.http.post(this.apiUrl, data);
   }
