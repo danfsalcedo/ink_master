@@ -1,0 +1,19 @@
+<div class="container-fluid"  *ngIf="perfil">
+      <div class="card-wrapper">
+        <div class="card">
+          <div class="col-md-4">
+            <img [src]="perfil.fotoEmpleado" class="mx-auto d-block" alt="Foto del empleado">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">Historia</h5>
+                <p class="card-text">{{ perfil.historiaEmpleado }}</p>
+                <h5 class="card-title">Experiencia</h5>
+                <p class="card-text">{{ perfil.experienciaEmpleado }}</p>
+                    <h5 class="card-title">Sus enfoques </h5>
+                        <p class="card-text">{{ perfil.enfoquesEmpleado }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

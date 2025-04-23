@@ -7,7 +7,7 @@
           <h5 class="card-title">{{ perfil.empleado?.nombreEmpleado }}</h5> <!-- Aquí accedemos al nombre del empleado -->
           <h5 class="card-subtitle">Sus enfoques</h5>
           <p class="card-text">{{ perfil.enfoquesEmpleado }}</p>
-          <a class="nav-link btn" [routerLink]="['/info']">Ver más</a>
+          <a class="nav-link btn" [routerLink]="['/tatuadores', perfil.idPerfil]">Ver más</a>
         </div>
       </div>
     </div>

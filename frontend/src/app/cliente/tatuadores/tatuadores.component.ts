@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { PerfilEmpleado } from '../../modelos/perfil-empleado.model';
-import { PerfilEmpleadoService } from '../../services/perfil-empleado.service';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { environment } from '../../../enviroments/enviroment';
 import { HttpClient } from '@angular/common/http';
 
 @Component({

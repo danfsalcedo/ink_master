@@ -13,8 +13,8 @@ export class PerfilEmpleadoService {
 
   constructor(private http: HttpClient) {}
 
-  getPerfil(idEmpleado: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/${idEmpleado}`).pipe(
+  getPerfil(idPerfil: number): Observable<PerfilEmpleado> {
+    return this.http.get<PerfilEmpleado>(`${this.apiUrl}/${idPerfil}`).pipe(
       catchError(error => {
         console.error('Error al obtener perfil', error);
         return throwError(() => error);

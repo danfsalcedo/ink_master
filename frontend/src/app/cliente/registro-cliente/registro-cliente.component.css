@@ -12,6 +12,13 @@ min-height: calc(100vh - 120px); /* Ajusta la altura restando el espacio de cabe
 padding: 2rem 0;              /* Espacio adicional arriba y abajo */
 }
 
+.p-3 {
+  background-color: rgb(179, 20, 20); /* Fondo rojo oscuro */
+  color: white;
+  border-radius: 10px;
+  padding: 20px;
+}
+
 .container {
 width: 100%;
 max-width: 600px;             /* Limita el ancho del formulario */

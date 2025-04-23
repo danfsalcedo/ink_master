@@ -7,11 +7,11 @@ import { CitasRegistradasComponent } from './administrador/citas-registradas/cit
 import { ClientesRegistradosComponent } from './administrador/clientes-registrados/clientes-registrados.component';
 import { EmpleadosRegistradosComponent } from './administrador/empleados-registrados/empleados-registrados.component';
 import { LoginComponent } from './componentes/login/login.component';
-import { TatuadoresdetComponent } from './cliente/tatuadoresdet/tatuadoresdet.component';
 import { AuthGuard } from './auth.guard';
 import { CalendarioCitasComponent } from './empleado/calendario-citas/calendario-citas.component';
 import { AccesoDenegadoComponent } from './componentes/acceso-denegado/acceso-denegado.component';
 import { PerfilEmpleadoComponent } from './empleado/perfil-empleado/perfil-empleado.component';
+import { TatuadoresDetalleComponent } from './cliente/tatuadores-detalle/tatuadores-detalle.component';
 
 export const routes: Routes = [
   // Rutas públicas
@@ -19,10 +19,10 @@ export const routes: Routes = [
   { path: 'inicio', component: InicioComponent },
   { path: 'registrate', component: RegistroClienteComponent },
   { path: 'tatuadores', component: TatuadoresComponent },
-  { path: 'info', component: TatuadoresdetComponent },
   { path: 'login', component: LoginComponent },
   { path: 'acceso-denegado', component: AccesoDenegadoComponent },
-
+  { path: 'tatuadores/:id', component: TatuadoresDetalleComponent },
+  
   // Rutas de cliente (requieren autenticación y rol cliente)
   { 
     path: 'agenda', 

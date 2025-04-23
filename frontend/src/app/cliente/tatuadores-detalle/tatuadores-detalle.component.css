@@ -1,0 +1,57 @@
+/* Contenedor general */
+.container-fluid {
+  padding: 40px 20px;
+  color: #fff;
+}
+
+/* Contenedor de la tarjeta principal */
+.card {
+  display: flex;
+  flex-direction: row;
+  background-color: #1e1e1e;
+  border: none;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  color: #fff;
+}
+
+/* Imagen de perfil */
+.card img {
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  object-fit: cover;
+  border-right: 5px solid #a00;
+}
+
+/* Sección de texto */
+.card-body {
+  padding: 30px;
+}
+
+/* Títulos */
+.card-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ff4d4d;
+}
+
+/* Párrafos */
+.card-text {
+  line-height: 1.6;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+  }
+
+  .card img {
+    max-width: 100%;
+    border-right: none;
+    border-bottom: 5px solid #a00;
+  }
+}

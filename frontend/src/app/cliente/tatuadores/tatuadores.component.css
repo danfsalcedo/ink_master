@@ -12,7 +12,7 @@
 .card {
   border: none; /* Sin borde para un diseño más limpio */
   border-radius: 12px; /* Bordes más redondeados */
-  background-color: rgb(138, 13, 13);; /* Fondo blanco para las tarjetas */
+  background-color: rgb(138, 13, 13); /* Fondo blanco para las tarjetas */
   color: #fff; /* Texto en color oscuro para mejor legibilidad */
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra más suave para profundidad */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación suave */

@@ -20,3 +20,10 @@
     margin-bottom: 1.5rem;        /* Espacio debajo del título */
     margin-top: 2rem;             /* Espacio encima del título */
 }
+
+.p-3 {
+    background-color: rgb(179, 20, 20); /* Fondo rojo oscuro */
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+}   
