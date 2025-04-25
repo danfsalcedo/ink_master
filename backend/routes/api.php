@@ -34,7 +34,7 @@ Route::delete('/admin/{idAdmin}',[adminControlador::class,'eliminar']);
 Route::get('/citas', [citaControlador::class, 'listar']);
 Route::get('/citas/{idCita}', [citaControlador::class, 'mostrar']);
 Route::post('/citas', [citaControlador::class, 'agregar']);
-Route::put('/citas/{idCita}', [citaControlador::class, 'modificar']);
+Route::put('/citas/{idCita}', [citaControlador::class, 'actualizar']);
 Route::delete('/citas/{idCita}', [citaControlador::class, 'eliminar']);
 
 Route::get('/perfil', [perfilEmpleadoControlador::class, 'listar']);

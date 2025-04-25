@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { PerfilEmpleadoService } from '../../services/perfil-empleado.service';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-perfil-empleado',
@@ -70,11 +71,20 @@ export class PerfilEmpleadoComponent implements OnInit {
   
     this.perfilService.guardarPerfil(formData).subscribe({
       next: (res) => {
-        alert('Perfil guardado exitosamente');
+       Swal.fire({
+             icon: 'success',
+             title: 'Tu perfil se ha guardado de forma exitosa!',
+             showConfirmButton: false,
+             timer: 1500
+           });
       },
       error: (err) => {
         console.error(err);
-        alert('Hubo un error al guardar el perfil');
+        Swal.fire({
+              icon: 'error',
+              title: 'Registro fallido',
+              text: 'Hubo un error al actualizar tu perfil.'
+            });
       }
     });
   }

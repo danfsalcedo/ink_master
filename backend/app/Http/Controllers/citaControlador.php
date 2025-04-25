@@ -29,8 +29,8 @@ class citaControlador extends Controller
 {
     $citas = citaModelo::select('idCita', 'fechaCita', 'horaCita', 'idCliente', 'idEmpleado')
         ->with([
-            'cliente:idCliente,nombreCliente,apellidoCliente',
-            'empleado:idEmpleado,nombreEmpleado'
+            'cliente:nombreCliente',
+            'empleado:nombreEmpleado'
         ])
         ->get();
 

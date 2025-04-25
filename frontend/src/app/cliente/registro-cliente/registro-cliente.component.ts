@@ -30,7 +30,12 @@ export class RegistroClienteComponent{
       nombreCliente: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(40)]),
       apellidoCliente: new FormControl('',[Validators.required, Validators.minLength(2), Validators.maxLength(40)]),
       telefonoCliente: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(15)]),
-      contrasenaCliente: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(20)])
+      contrasenaCliente: new FormControl( '', 
+        [
+          Validators.required,
+          Validators.minLength(2), Validators.maxLength(15),
+          Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/)
+        ]),
     });
   }
 
@@ -66,4 +71,21 @@ export class RegistroClienteComponent{
       text: 'Tu correo ya se encuentra registrado.'
     });
   }
+
+  mostrarPopover(popover: any) {
+  const control = this.form.get('contrasenaCliente');
+  if (control?.invalid && control?.touched) {
+    popover.open();
+  }
 }
+
+ocultarPopover(popover: any) {
+  const control = this.form.get('contrasenaCliente');
+  if (!control?.invalid) {
+    popover.close();
+  }
+}
+
+}
+
+    
