@@ -1,68 +1,45 @@
 version: '3.8'
 
 services:
-  # Laravel (PHP-FPM)
-  laravel:
-    build:
-      context: ./backend               # Ruta al Dockerfile
-      dockerfile: Dockerfile           # Opcional si se llama así
-    container_name: laravel
-    volumes:
-      - ./backend-laravel:/var/www     # Sincroniza tu código con el contenedor
-    ports:
-      - "9000:9000"                     # Puerto PHP-FPM
-    depends_on:
-      - mysql
-    networks:
-      - appnet
-    restart: unless-stopped
-
-  # Base de datos MySQL
-  mysql:
-    image: mysql:latest
-    container_name: mysql
-    stdin_open: true
+  db:
+    image: mysql:8.0
+    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: 123456789
-      MYSQL_DATABASE: my_database
-      MYSQL_USER: user
-      MYSQL_PASSWORD: user_password
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravelpassword
+    volumes:
+      - mysql_data:/var/lib/mysql
     ports:
       - "3306:3306"
-    restart: always
-    networks:
-      - appnet
 
-  # Panel de administración phpMyAdmin
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
-    restart: always
-    ports:
-      - "8080:80"
+  backend:
+    build:
+      context: ./backend
+    working_dir: /var/www
+    volumes:
+      - ./backend:/var/www
     environment:
-      PMA_HOST: mysql
-      MYSQL_ROOT_PASSWORD: 123456789
+      DB_HOST: db
+      DB_DATABASE: laravel
+      DB_USERNAME: laravel
+      DB_PASSWORD: laravelpassword
     depends_on:
-      - mysql
-    networks:
-      - appnet
+      - db
+    ports:
+      - "8000:8000"
+    command: php artisan serve --host=0.0.0.0 --port=8000
 
-  # Frontend Angular
-  angular:
+  frontend:
     build:
       context: ./frontend
-    container_name: angular
+    volumes:
+      - ./frontend:/app
     ports:
       - "4200:80"
     depends_on:
-      - laravel
-    networks:
-      - appnet
-    restart: unless-stopped
-
-networks:
-  appnet:
+      - backend
 
 volumes:
-  db_data:
+  mysql_data:
