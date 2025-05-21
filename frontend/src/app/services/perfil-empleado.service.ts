@@ -4,12 +4,13 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { PerfilEmpleado } from '../modelos/perfil-empleado.model';
+import { environment } from '../../enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PerfilEmpleadoService {
-  private apiUrl = 'http://localhost:8000/api/perfil';
+  private apiUrl = environment.apiUrl + '/perfil';
 
   constructor(private http: HttpClient) {}
 

@@ -2,14 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cita } from '../modelos/cita.model';
-
+import { environment } from '../../enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CitaService {
 
-  private readonly API_URL='http://127.0.0.1:8000/api';
+  private readonly API_URL= environment.apiUrl;
 
   constructor(
     private http: HttpClient
