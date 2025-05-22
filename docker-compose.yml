@@ -1,45 +1,41 @@
-version: '3.8'
+name: inkmaster
 
 services:
   db:
-    image: mysql:8.0
+    image: miguela12485/db:1.0.0
     restart: always
     environment:
-      MYSQL_DATABASE: laravel
+      MYSQL_DATABASE: inkmaster
       MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_USER: laravel
-      MYSQL_PASSWORD: laravelpassword
     volumes:
       - mysql_data:/var/lib/mysql
     ports:
       - "3306:3306"
+    networks:
+      - red
+
 
   backend:
-    build:
-      context: ./backend
-    working_dir: /var/www
-    volumes:
-      - ./backend:/var/www
+    image: laravel:1.0.0
+    restart: always
     environment:
       DB_HOST: db
-      DB_DATABASE: laravel
-      DB_USERNAME: laravel
-      DB_PASSWORD: laravelpassword
-    depends_on:
-      - db
+      DB_DATABASE: inkmaster
+      DB_USERNAME: root
+      DB_PASSWORD: rootpassword
     ports:
       - "8000:8000"
-    command: php artisan serve --host=0.0.0.0 --port=8000
+    networks:
+      - red    
 
   frontend:
-    build:
-      context: ./frontend
-    volumes:
-      - ./frontend:/app
+    image: miguela12485/angular:1.0.0
     ports:
       - "4200:80"
-    depends_on:
-      - backend
 
 volumes:
   mysql_data:
+
+networks:
+  red:
+    driver: bridge

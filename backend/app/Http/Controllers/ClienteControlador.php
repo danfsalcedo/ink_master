@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 
 
-class ClienteControlador extends controller
+class ClienteControlador extends Controller
 {
     public function listar (){
         $cliente = cliente::all();
