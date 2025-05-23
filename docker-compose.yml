@@ -30,6 +30,7 @@ services:
 
   frontend:
     image: angular:1.0.0
+    restart: always
     ports:
       - "4200:4200"
     depends_on:

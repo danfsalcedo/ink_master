@@ -27,8 +27,10 @@ WORKDIR /var/www
 COPY . .
 
 # Instalar dependencias del proyecto sin dev para producción
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
-
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader && \
+    if [ ! -f .env ]; then cp .env.example .env; fi && \
+    php artisan key:generate && \
+    php artisan jwt:secret --force
 
 # Ajustar permisos necesarios para Laravel
 RUN chown -R www-data:www-data storage bootstrap/cache
