@@ -16,7 +16,7 @@ services:
 
 
   backend:
-    image: laravel:1.0.0
+    image: miguela12485/laravel:1.0.0
     restart: always
     environment:
       DB_HOST: db
@@ -29,7 +29,7 @@ services:
       - red    
 
   frontend:
-    image: angular:1.0.0
+    image: miguela12485/angular:1.0.0
     restart: always
     ports:
       - "4200:4200"
