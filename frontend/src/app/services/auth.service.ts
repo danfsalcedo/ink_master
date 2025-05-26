@@ -1,14 +1,19 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private apiUrl = environment.apiUrl;
+
   constructor(
     private router: Router,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private http: HttpClient
   ) { }
 
   // Verifica si el usuario está autenticado
@@ -70,5 +75,14 @@ export class AuthService {
       localStorage.removeItem('userType');
     }
     this.router.navigate(['/inicio']);
+  }
+
+  // Método para hacer login usando tu backend
+  loginBackend(email: string, password: string) {
+    // Suponiendo que tu backend recibe email y password en /api/login
+    return this.http.post<{token: string, userType: string, userId: number}>(
+      `${this.apiUrl}/api/login`,
+      { email, password }
+    );
   }
 }

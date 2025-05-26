@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +29,7 @@ export class LoginComponent {
   onLogin() {
     if (this.form.valid) {
       const datos = this.form.value;
-      this.http.post<any>('http://localhost:8000/api/login', datos)
+      this.http.post<any>(`${environment.apiUrl}/api/login`, datos)
       .subscribe({
         next: (respuesta: any) => {
           this.authService.login(respuesta.token, respuesta.tipo, respuesta.idCliente || respuesta.idEmpleado || respuesta.isAdmin);

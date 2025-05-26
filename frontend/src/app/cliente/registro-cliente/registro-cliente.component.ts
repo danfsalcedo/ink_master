@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 
 import Swal from 'sweetalert2';
-import { environment } from '../../../enviroments/enviroment';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-registro-cliente',
