@@ -4,6 +4,9 @@ import { PerfilEmpleadoService } from '../../services/perfil-empleado.service';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../src/environments/environment';
+import { PerfilEmpleado } from '../../modelos/perfil-empleado.model';
 
 @Component({
   selector: 'app-perfil-empleado',
@@ -21,7 +24,8 @@ export class PerfilEmpleadoComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private perfilService: PerfilEmpleadoService,
-    private authService: AuthService
+    private authService: AuthService,
+    private http: HttpClient
   ) {}
   
   ngOnInit(): void {
@@ -87,6 +91,18 @@ export class PerfilEmpleadoComponent implements OnInit {
             });
       }
     });
+  }
+
+  obtenerEmpleados() {
+    this.http.get<PerfilEmpleado[]>(`${environment.apiUrl}/perfil`)
+      .subscribe({
+        next: (empleados) => {
+          console.log(empleados);
+        },
+        error: (err) => {
+          console.error('Error al obtener empleados', err);
+        }
+      });
   }
 
 }

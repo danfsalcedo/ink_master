@@ -6,6 +6,8 @@ import { PaginadorComponent } from '../../componentes/paginador/paginador.compon
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-empleados-registrados',
@@ -31,7 +33,7 @@ export class EmpleadosRegistradosComponent {
   showPassword: boolean = false;
 
   constructor(
-    private empleadoService: EmpleadoService, private modalService: NgbModal
+    private empleadoService: EmpleadoService, private modalService: NgbModal, private http: HttpClient
   ) { }
 
   ngOnInit(): void {
@@ -40,7 +42,8 @@ export class EmpleadosRegistradosComponent {
   }
 
   private loadDataIntoTable(): void {
-    this.empleadoService.getEmpleados().subscribe( empleados=> {
+    this.http.get<Empleado[]>(`${environment.apiUrl}/empleados`)
+    .subscribe( empleados=> {
       this.empleadosPaginados = empleados;
       this.total = empleados.length;
       this.paginaActual = 1;

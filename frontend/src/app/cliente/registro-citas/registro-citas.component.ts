@@ -7,7 +7,7 @@ import { RouterLink, RouterModule, RouterOutlet, Router } from '@angular/router'
 import Swal from 'sweetalert2';
 import { EmpleadoService } from '../../services/empleado.service';
 import { jwtDecode } from 'jwt-decode';
-
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-registro-citas',
@@ -50,7 +50,7 @@ export class RegistroCitasComponent implements OnInit {
         idCliente: idCliente
       };
   
-        this.http.post('http://127.0.0.1:8000/api/citas', datos)
+        this.http.post(`${environment.apiUrl}/citas`, datos)
         .subscribe({
           next: (respuesta) => {
             console.log('Datos enviados exitosamente', respuesta, datos);
@@ -90,7 +90,7 @@ export class RegistroCitasComponent implements OnInit {
     }
 
   obtenerEmpleados() {
-    this.http.get<Empleado[]>('http://127.0.0.1:8000/api/empleados')
+    this.http.get<Empleado[]>(`${environment.apiUrl}/empleados`)
       .subscribe(data => {
         this.empleados = data;
       }, error => {

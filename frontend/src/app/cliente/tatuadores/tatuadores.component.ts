@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { PerfilEmpleado } from '../../modelos/perfil-empleado.model';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 //
 
 @Component({
@@ -22,12 +23,12 @@ export class TatuadoresComponent implements OnInit{
   }
 
   obtenerPerfiles(): void {
-    this.http.get<PerfilEmpleado[]>('http://127.0.0.1:8000/api/perfil')
+    this.http.get<PerfilEmpleado[]>(`${environment.apiUrl}/perfil`)
       .subscribe(data => {
         this.perfiles = data.map(perfil => ({
           ...perfil,
           // Ajustamos la ruta de la imagen según Laravel
-          fotoEmpleado: `http://127.0.0.1:8000/storage/${perfil.fotoEmpleado}`,
+          fotoEmpleado: `${environment.storageUrl}/api/storage/${perfil.fotoEmpleado}`,
         }));
       }, error => {
         console.error('Error al obtener los perfiles:', error);

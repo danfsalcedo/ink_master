@@ -29,7 +29,7 @@ export class LoginComponent {
   onLogin() {
     if (this.form.valid) {
       const datos = this.form.value;
-      this.http.post<any>(`${environment.apiUrl}/api/login`, datos)
+      this.http.post<any>(`${environment.apiUrl}/login`, datos)
       .subscribe({
         next: (respuesta: any) => {
           this.authService.login(respuesta.token, respuesta.tipo, respuesta.idCliente || respuesta.idEmpleado || respuesta.isAdmin);

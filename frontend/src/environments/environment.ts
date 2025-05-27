@@ -1,4 +1,5 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://20.81.144.213:8000'
+  apiUrl: 'http://inkmaster.duckdns.org:8000/api',
+  storageUrl: 'http://inkmaster.duckdns.org:4200'
 };

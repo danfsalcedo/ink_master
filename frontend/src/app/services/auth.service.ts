@@ -81,7 +81,7 @@ export class AuthService {
   loginBackend(email: string, password: string) {
     // Suponiendo que tu backend recibe email y password en /api/login
     return this.http.post<{token: string, userType: string, userId: number}>(
-      `${this.apiUrl}/api/login`,
+      `${this.apiUrl}/login`,
       { email, password }
     );
   }
