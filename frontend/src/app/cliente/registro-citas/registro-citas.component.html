@@ -4,18 +4,18 @@
     <form class="p-3 m-5 rounded" [formGroup]="form" (ngSubmit)="onSubmit()">
       
       <div class="mb-3">
-        <label class="form-label">Fecha de tu cita</label>
-        <input type="date" class="form-control" formControlName="fechaCita">
+        <label class="form-label" for="fechaCita">Fecha de tu cita</label>
+        <input type="date" class="form-control" id="fechaCita" formControlName="fechaCita">
       </div>
 
       <div class="mb-3">
-        <label class="form-label">Hora de la cita</label>
-        <input type="time" class="form-control" formControlName="horaCita">
+        <label class="form-label" for="horaCita">Hora de la cita</label>
+        <input type="time"  class="form-control" id="horaCita" formControlName="horaCita">
       </div>
 
       <div class="mb-3">
-        <label class="form-label">Empleado</label>
-        <select class="form-select" formControlName="idEmpleado">
+        <label class="form-label" for="idEmpleado">Empleado</label>
+        <select class="form-select" id="idEmpleado" formControlName="idEmpleado">
           <option value="">Seleccione un empleado</option>
           <option *ngFor="let empleado of empleados" [value]="empleado.idEmpleado">
             {{ empleado.nombreEmpleado }}

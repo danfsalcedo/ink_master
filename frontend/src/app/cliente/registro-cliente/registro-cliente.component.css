@@ -4,12 +4,7 @@
     justify-content: center;      /* Centra horizontalmente */
     align-items: center;          /* Centra verticalmente */
     min-height: calc(100vh - 120px); /* Ajusta la altura restando el espacio de cabecera y pie de página */
-    padding: 2rem 0;
-display: flex;
-justify-content: center;      /* Centra horizontalmente */
-align-items: center;          /* Centra verticalmente */
-min-height: calc(100vh - 120px); /* Ajusta la altura restando el espacio de cabecera y pie de página */
-padding: 2rem 0;              /* Espacio adicional arriba y abajo */
+    padding: 2rem 0;          /* Espacio adicional arriba y abajo */
 }
 
 .p-3 {

@@ -3,11 +3,11 @@
     <h2 class="form-title">Ingresa tus credenciales</h2>
     <form class=" p-3 m-5 rounded" [formGroup]="form" (ngSubmit)="onLogin()">
         <div class="mb-3">
-            <label class="form-label">Correo</label>
+            <label class="form-label" for="correo">Correo</label>
             <input type="text" class="form-control" id="correo" formControlName="correo">
         </div>
         <div class="mb-3">
-            <label class="form-label">Contraseña</label>
+            <label class="form-label" for="contrasena">Contraseña</label>
             <input type="password" class="form-control" id="contrasena" formControlName="contrasena">
         </div>
         <div class="text-center">
